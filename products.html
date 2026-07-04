@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>i don't know right now</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div id="bt-bar" class="highlight">
+			<button class="flag-button about-bt highlight" data-language="en">EN</button>
+			<button class="flag-button about-bt highlight" data-language="ar">AR</button>
+			<button id="bt-ret-main" class="about-bt highlight" onclick="window.location.href='index.html'">return</button>
+		</div>
+		<div class="card highlight">
+			<img  class="highlight product-img"id="product1-img" align="right" src="product1-img.jpg" alt="product image">
+			<h2 id="prodct-name" class="name">سبحة كريستال</h2>
+			<br>
+			<h4 id="product-des">السعر: 40 ج.م</h4>
+			<textarea id="body" hidden>buying request</textarea>
+			<button id="bt-buy1" class="about-bt highlight" onclick="
+const phone = prompt('Enter your phone number:');
+if (phone !== null && phone.trim() !== '') {
+    document.getElementById('body').value =
+        'Button: ' + this.id + '\nPhone: ' + phone;
+    sendEmail();
+}
+">buy</button>
+		</div>
+		
+		
+		<div class="card highlight">
+			<img  class="highlight product-img"id="product2-img" align="right" src="product2-img.jpg" alt="product image">
+			<h2 id="prodct-name1" class="name">غويشة فيروز</h2>
+			<br>
+			<h4 id="product-des1">السعر: 50 ج.م</h4>
+			<textarea id="body" hidden>buying request</textarea>
+			<button id="bt-buy2" class="about-bt highlight" onclick="
+const phone = prompt('Enter your phone number:');
+if (phone !== null && phone.trim() !== '') {
+    document.getElementById('body').value =
+        'Button: ' + this.id + '\nPhone: ' + phone;
+    sendEmail();
+}
+">buy</button>
+		</div>
+		
+		
+				<div class="card highlight">
+			<img  class="highlight product-img"id="product3-img" align="right" src="product3-img.jpg" alt="product image">
+			<h2 id="prodct-name2" class="name">ميدالية فيروز</h2>
+			<br>
+			<h4 id="product-des2">السعر: 50 ج.م</h4>
+			<textarea id="body" hidden>buying request</textarea>
+			<button id="bt-buy3" class="about-bt highlight" onclick="
+const phone = prompt('Enter your phone number:');
+if (phone !== null && phone.trim() !== '') {
+    document.getElementById('body').value =
+        'Button: ' + this.id + '\nPhone: ' + phone;
+    sendEmail();
+}
+">buy</button>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

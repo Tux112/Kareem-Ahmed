@@ -1,0 +1,101 @@
+body{
+ background-image: radial-gradient( circle, #917C8A, #A2AF9B );
+ }
+ .name{
+ height: 2px;
+ }
+
+ .card{
+ color: black;
+ background-color: #7A8581;
+ border-radius: 20px;
+ width: 500px;
+ height: 240px;
+ margin: 100px auto;
+ padding: 30px;
+ }
+ .highlight {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+.about-bt{
+background-color: #7d918e;
+color: black;
+border-radius: 20px;
+border: 2px solid #1d2530;
+width: 80px;
+height: 40px;
+margin: 0px auto;
+}
+#bt-menu{
+height: 20px;
+margin: 2px auto;
+}
+#homepage-img{
+width: 200px;
+height: 250px;
+border-radius: 20px;
+margin: -140px auto;
+border: 2px solid #1d2530;
+ 
+}
+#bt-products{
+float: right;
+}
+#bt-bar{
+color: white;
+background-color: #7A8581;
+border-radius: 20px;
+height: 0px;
+width: auto;
+padding: 30px;
+}
+.flag-button{
+height:  auto;
+width: 30px;
+margin: -150px auto;
+position:relative;
+top: -10px;
+}
+#bt-debug{
+position:relative;
+top: -18px;
+margin: 2px;
+float: right;
+}
+#bt-email{
+height: 45px;
+position:relative;
+top: 25px;
+}
+.text{
+position:relative;
+top: 20px;
+}
+#bt-ret-main{
+position:relative;
+top: -18px;
+float: right;
+margin: 2px;
+}
+#product1-img{
+width: 200px;
+height: 250px;
+border-radius: 20px;
+margin: 0px auto;
+border: 2px solid #1d2530;
+}
+.product-img{
+width: 200px;
+height: 250px;
+border-radius: 20px;
+margin: 0px auto;
+border: 2px solid #1d2530;
+}
+ 
