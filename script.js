@@ -42,7 +42,7 @@ function sendEmail() {
         return;
     }
 
-    fetch('/.netlify/functions/send-email', {
+    fetch("https://telegram-worker.<your-subdomain>.workers.dev", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ body: body })
