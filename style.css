@@ -99,8 +99,13 @@ margin: 0px auto;
 border: 2px solid #1d2530;
 }
 #main{
-width: 700px;
-height: 500px;
+ color: black;
+ background-color: #7A8581;
+ border-radius: 20px;
+ width: 700px;
+ height: 500px;
+ margin: 100px auto;
+ padding: 30px;
 }
 
  
