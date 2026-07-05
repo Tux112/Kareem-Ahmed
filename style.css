@@ -2,6 +2,7 @@ body{
  background-image: radial-gradient( circle, #917C8A, #A2AF9B );
  }
  .name{
+ font-size: 60px;
  height: 2px;
  }
 
@@ -38,10 +39,10 @@ height: 20px;
 margin: 2px auto;
 }
 #homepage-img{
-width: 200px;
-height: 250px;
+width: 350px;
+height: 415px;
 border-radius: 20px;
-margin: -140px auto;
+margin: -250px auto;
 border: 2px solid #1d2530;
  
 }
@@ -99,13 +100,9 @@ margin: 0px auto;
 border: 2px solid #1d2530;
 }
 #main{
- color: black;
- background-color: #7A8581;
- border-radius: 20px;
- width: 700px;
- height: 500px;
- margin: 100px auto;
- padding: 30px;
+width: 700px;
+height: 400px;
 }
-
- 
+#job{
+font-size: 30px;
+}
