@@ -2,7 +2,6 @@ body{
  background-image: radial-gradient( circle, #917C8A, #A2AF9B );
  }
  .name{
- font-size: 60px;
  height: 2px;
  }
 
@@ -85,16 +84,9 @@ top: -18px;
 float: right;
 margin: 2px;
 }
-#product1-img{
-width: 200px;
-height: 250px;
-border-radius: 20px;
-margin: 0px auto;
-border: 2px solid #1d2530;
-}
 .product-img{
-width: 200px;
-height: 250px;
+width: 240px;
+height: 125px;
 border-radius: 20px;
 margin: 0px auto;
 border: 2px solid #1d2530;
@@ -105,4 +97,33 @@ height: 400px;
 }
 #job{
 font-size: 30px;
+}
+#name{
+font-size: 60px;
+}
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+.products-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 600px) {
+.products-container {
+grid-template-columns: 1fr;
+}
+}
+.product-box{
+width: 250px;
+}
+.cl-buy{
+position:relative;
+right: -150px;
+top: -50px;
 }
