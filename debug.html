@@ -1,28 +1,53 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>i don't know right now</title>
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body>
-		<div id="bt-bar" class="highlight">
-			<button class="flag-button about-bt highlight" data-language="en">EN</button>
-			<button class="flag-button about-bt highlight" data-language="ar">AR</button>
-			<button id="bt-ret-main" class="about-bt highlight" onclick="window.location.href='index.html'">return</button>
-		</div>
-		<div class="card highlight">
-			<h2 id="problem-debug" class="name">أكتب مشكلتك هنا ثم أضغط على أرسال</h2>
-			<form class="text" onsubmit="event.preventDefault(); sendEmail();">
-    <textarea 
-        id="body" 
-        placeholder="describe you problem" 
-        rows="5" 
-        required
-    ></textarea>
-    <button id="bt-email"class="about-bt highlight" type="submit">Send Email</button>
-</form>
-		</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug</title>
 
-		<script src="script.js"></script>
-	</body>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="bt-bar" class="highlight">
+        <button class="flag-button about-bt highlight" data-language="en">EN</button>
+        <button class="flag-button about-bt highlight" data-language="ar">AR</button>
+
+        <button
+            id="bt-ret-main"
+            class="about-bt highlight"
+            onclick="window.location.href='index.html'">
+            return
+        </button>
+    </div>
+
+    <div class="card highlight">
+
+        <h2 id="problem-debug">
+            أكتب مشكلتك هنا ثم أضغط على أرسال
+        </h2>
+
+        <form class="text" onsubmit="event.preventDefault(); sendEmail();">
+
+            <textarea
+                id="body"
+                placeholder="Describe your problem..."
+                rows="6"
+                required>
+            </textarea>
+
+            <button
+                id="bt-email"
+                class="about-bt highlight"
+                type="submit">
+                Send Email
+            </button>
+
+        </form>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
 </html>
