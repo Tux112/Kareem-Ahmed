@@ -1,29 +1,53 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>i don't know right now</title>
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body>
-		<div id="bt-bar" class="highlight">
-			<button class="flag-button about-bt highlight" data-language="en">EN</button>
-			<button class="flag-button about-bt highlight" data-language="ar">AR</button>
-			<button align="right" id="bt-debug" class="about-bt highlight" onclick="window.location.href='debug.html'">debug</button>
-		</div>
-		<div id="main"class="card highlight">
-			<h1 id="name" class="name">كريم أحمد</h1>
-			<br>
-			<br>
-			<br>
-			<h3 id="job">مدرس حرف يدوية</h3>
-			<img  class="highlight"id="homepage-img" align="right" src="homepage-img.jpg" alt="Kareem Ahmed img">
-			
-		</div>
-		<div id="bt-menu"class="card highlight">
-			<button class="about-bt highlight" onclick="window.location.href='about.html'">about</button>
-			<button id="bt-products" class="about-bt highlight" onclick="window.location.href='products.html'">products</button>
-		</div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i don't know right now</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-		<script src="script.js"></script>
-	</body>
+    <div id="bt-bar" class="highlight">
+        <button class="flag-button about-bt highlight" data-language="en">EN</button>
+        <button class="flag-button about-bt highlight" data-language="ar">AR</button>
+
+        <button id="bt-debug"
+                class="about-bt highlight"
+                onclick="window.location.href='debug.html'">
+            debug
+        </button>
+    </div>
+
+    <div id="main" class="card highlight">
+
+        <div class="main-content">
+            <h1 id="name" class="name">كريم أحمد</h1>
+            <h3 id="job">مدرس حرف يدوية</h3>
+        </div>
+
+        <img
+            id="homepage-img"
+            class="highlight"
+            src="homepage-img.jpg"
+            alt="Kareem Ahmed">
+
+    </div>
+
+    <div id="bt-menu" class="card highlight">
+        <button class="about-bt highlight"
+                onclick="window.location.href='about.html'">
+            about
+        </button>
+
+        <button id="bt-products"
+                class="about-bt highlight"
+                onclick="window.location.href='products.html'">
+            products
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
 </html>
