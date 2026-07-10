@@ -136,7 +136,7 @@ function sendEmail() {
         return;
     }
 
-    fetch("https://telegram-worker.dronlymohamed112.workers.dev/", {
+    fetch("https://telegram-worker.dronlymohamed112.workers.dev", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ body: body })
