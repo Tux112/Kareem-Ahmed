@@ -1,241 +1,277 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    background-image: radial-gradient(circle, #917C8A, #A2AF9B);
-    font-family: Arial, sans-serif;
-    padding: 20px;
+html{
+    scroll-behavior:smooth;
 }
 
-.name {
-    margin-bottom: 15px;
+body{
+    background-image:radial-gradient(circle,#fefae0,#faedcd);
+    font-family:Arial,sans-serif;
+    padding:20px;
+    color:black;
 }
 
-.card {
-    color: black;
-    background-color: #7A8581;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 700px;
-    margin: 30px auto;
-    padding: 30px;
+.card{
+    background:#d4a373;
+    border-radius:20px;
+    width:min(100%,900px);
+    margin:30px auto;
+    padding:30px;
 }
 
-.highlight {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,.3);
-    transition: transform .2s ease, box-shadow .2s ease;
+.name{
+    margin-bottom:15px;
 }
 
-.highlight:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 15px rgba(0,0,0,.4);
+.highlight{
+    transition:.25s;
 }
 
-.about-bt {
-    background-color: #7d918e;
-    color: black;
-    border-radius: 20px;
-    border: 2px solid #1d2530;
-    width: 100px;
-    height: 42px;
-    cursor: pointer;
+.highlight:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 20px rgba(0,0,0,.25);
 }
 
-.about-bt:hover {
-    cursor: pointer;
+.about-bt{
+    background:#dda15e;
+    border:2px solid #bc6c25;
+    border-radius:20px;
+    color:black;
+    cursor:pointer;
+    width:100px;
+    height:42px;
+    transition:.25s;
+    flex-shrink:0;
 }
 
-#bt-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-
-    color: white;
-    background-color: #7A8581;
-    border-radius: 20px;
-
-    max-width: 1000px;
-    margin: auto;
-    padding: 15px 20px;
+.about-bt:hover{
+    background:#ffbc42;
 }
 
-.flag-button {
-    width: 45px;
-    height: 40px;
+.flag-button{
+    width:45px;
+    height:40px;
+    flex-shrink:0;
+}
+
+#bt-bar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:#d4a373;
+    color:white;
+    border-radius:20px;
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+    padding:15px 20px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    flex-wrap:nowrap;
+    scrollbar-width:none;
+}
+
+#bt-bar::-webkit-scrollbar{
+    display:none;
 }
 
 #bt-debug,
-#bt-ret-main {
-    margin-left: auto;
+#bt-ret-main{
+    margin-left:auto;
 }
 
-#main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-
-    max-width: 900px;
-    min-height: 450px;
+#main{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    width:min(100%,1000px);
+    min-height:450px;
 }
 
-#homepage-img {
-    width: 320px;
-    max-width: 100%;
-    height: auto;
-
-    border-radius: 20px;
-    border: 2px solid #1d2530;
+#homepage-img{
+    width:100%;
+    max-width:350px;
+    height:auto;
+    border-radius:20px;
+    border:2px solid #1d2530;
 }
 
-#name {
-    font-size: 60px;
+#name{
+    font-size:clamp(36px,6vw,60px);
 }
 
-#job {
-    font-size: 30px;
-    margin-top: 15px;
+#job{
+    margin-top:15px;
+    font-size:clamp(22px,3vw,30px);
 }
 
-#bt-menu {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-
-    max-width: 700px;
-    padding: 20px;
+#bt-menu{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    width:100%;
+    max-width:700px;
+    margin:auto;
 }
 
-#bt-products {
-    float: none;
+#bt-products{
+    float:none;
 }
 
-.products-container {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 25px;
-
-    max-width: 1200px;
-    margin: 30px auto;
+.products-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    width:min(100%,1200px);
+    margin:30px auto;
 }
 
-.product-box {
-width: 300px;
+.product-box{
+    width:100%;
 }
 
-.product-img {
-width: 240px;
-height: 125px;
-border-radius: 20px;
-margin: 0px auto;
-border: 2px solid #1d2530;
-
+.product-img{
+    display:block;
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    border-radius:20px;
+    border:2px solid #1d2530;
 }
 
-.cl-buy {
-    display: block;
-    margin: 20px 0 0 auto;
-    position: static;
+.text{
+    margin-top:18px;
+    line-height:1.5;
 }
 
-.text {
-    margin-top: 20px;
+.cl-buy{
+    display:block;
+    margin:20px 0 0 auto;
 }
 
-#bt-email {
-    margin-top: 15px;
-    height: 45px;
+#bt-email{
+    margin-top:15px;
+    height:45px;
 }
 
-textarea {
-    width: 100%;
-    resize: vertical;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #1d2530;
+textarea{
+    width:100%;
+    padding:10px;
+    resize:vertical;
+    border-radius:10px;
+    border:2px solid #1d2530;
 }
 
-/* ---------- Tablets ---------- */
-
-@media (max-width:1024px){
-
-    #main{
-        flex-direction: column;
-        text-align:center;
-        min-height:auto;
-    }
-
-    #homepage-img{
-        width:280px;
-    }
-
-    .products-container{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-/* ---------- Phones ---------- */
-
-@media (max-width:768px){
-
+@media(max-width:900px){
     body{
-        padding:10px;
+        padding:15px;
     }
 
     #bt-bar{
-        flex-wrap:wrap;
+        gap:8px;
+        padding:12px 15px;
+    }
+
+    .about-bt{
+        width:90px;
+        height:40px;
+        font-size:14px;
+    }
+
+    .flag-button{
+        width:40px;
+        height:36px;
     }
 
     #main{
         flex-direction:column;
         text-align:center;
-        padding:20px;
+        min-height:auto;
     }
 
     #homepage-img{
-        width:100%;
         max-width:300px;
     }
+}
 
-    #name{
-        font-size:42px;
+@media(max-width:768px){
+    body{
+        padding:10px;
     }
 
-    #job{
-        font-size:24px;
+    .card{
+        padding:22px;
+    }
+
+    #bt-bar{
+        justify-content:flex-start;
+        gap:6px;
+        padding:10px;
+    }
+
+    .about-bt{
+        width:80px;
+        height:36px;
+        font-size:13px;
+    }
+
+    .flag-button{
+        width:34px;
+        height:34px;
+    }
+
+    #main{
+        gap:25px;
+        padding:15px;
+        flex-direction:column;
+        text-align:center;
+    }
+
+    #homepage-img{
+        max-width:280px;
     }
 
     #bt-menu{
         flex-direction:column;
         align-items:center;
     }
-
-    .about-bt{
-        width:160px;
-    }
-
-    .products-container{
-        grid-template-columns:1fr;
-    }
-
-    .product-box{
-        max-width:350px;
-    }
-
 }
 
-/* ---------- Small Phones ---------- */
-
-@media (max-width:480px){
+@media(max-width:480px){
+    body{
+        padding:8px;
+    }
 
     .card{
-        padding:20px;
+        padding:18px;
+        border-radius:15px;
+    }
+
+    #bt-bar{
+        gap:5px;
+        padding:8px;
+    }
+
+    .about-bt{
+        width:72px;
+        height:34px;
+        font-size:12px;
+    }
+
+    .flag-button{
+        width:30px;
+        height:30px;
+    }
+
+    #homepage-img{
+        max-width:220px;
     }
 
     #name{
@@ -245,10 +281,4 @@ textarea {
     #job{
         font-size:20px;
     }
-
-    .about-bt{
-        width:100%;
-        max-width:220px;
-    }
-
 }
