@@ -24,7 +24,7 @@ body{
 }
 
 .name{
-    margin-bottom:15px;
+    margin-bottom:50px;
 }
 
 .highlight{
@@ -103,7 +103,7 @@ body{
 }
 
 #name{
-    font-size:clamp(36px,6vw,60px);
+    font-size:clamp(48px,8vw,72px);
 }
 
 #job{
@@ -113,12 +113,20 @@ body{
 
 #bt-menu{
     display:flex;
+    align-items:center;
     justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
+    gap:10px;
+    background:#d4a373;
+    color:white;
+    border-radius:20px;
     width:100%;
-    max-width:700px;
+    max-width:1000px;
     margin:auto;
+    padding:15px 20px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    flex-wrap:nowrap;
+    scrollbar-width:none;
 }
 
 #bt-products{
