@@ -137,7 +137,7 @@ function sendEmail(bodyId) {
         return;
     }
 
-    fetch("https://telegram-worker.<your-subdomain>.workers.dev", {
+    fetch("https://telegram-worker.dronlymohamed112.workers.dev/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
