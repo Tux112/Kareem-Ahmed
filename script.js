@@ -128,35 +128,33 @@ document.querySelectorAll('.flag-button').forEach(button => {
     });
 });
 
-function sendEmail() {
-    const body = document.getElementById('body').value;
+function sendEmail(bodyId) {
+    const bodyElement = document.getElementById(bodyId);
+    const body = bodyElement.value;
 
     if (!body) {
         alert('Please enter a message');
         return;
     }
 
-    fetch("https://telegram-worker.dronlymohamed112.workers.dev", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+    fetch("https://telegram-worker.<your-subdomain>.workers.dev", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({ body: body })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Message sent!');
-            document.getElementById('body').value = '';
+            alert("Message sent!");
+            bodyElement.value = "";
         } else {
-            alert('Error: ' + data.error);
+            alert("Error: " + data.error);
         }
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to send message');
+        console.error(error);
+        alert("Failed to send message");
     });
 }
-
-
-window.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('[data-language="ar"]').click();
-});
