@@ -7,48 +7,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="bt-bar" class="highlight">
-        <button class="flag-button about-bt highlight" data-language="en">EN</button>
-        <button class="flag-button about-bt highlight" data-language="ar">AR</button>
-
-        <button id="bt-debug"
-                class="about-bt highlight"
-                onclick="window.location.href='debug.html'">
-            تصحيح
-        </button>
-    </div>
-
-    <div id="main" class="card highlight">
-
-        <div class="main-content">
-            <h1 id="name" class="name">د.كريم أحمد</h1>
-            <br>
-            <h3 id="job">مدرب حرف يدوية</h3>
+    <header id="bt-bar" class="site-header">
+        <a class="brand" href="index.html">Kareem Ahmed</a>
+        <nav class="site-nav">
+            <button id="bt-about" class="nav-button" onclick="window.location.href='about.html'">من نحن</button>
+            <button id="bt-products" class="nav-button" onclick="window.location.href='products.html'">المنتجات</button>
+            <button id="bt-debug" class="nav-button" onclick="window.location.href='debug.html'">تصحيح</button>
+        </nav>
+        <div class="site-controls">
+            <button class="language-button" data-language="en">EN</button>
+            <button class="language-button" data-language="ar">AR</button>
+            <button id="theme-toggle" class="theme-button" type="button"></button>
         </div>
+    </header>
 
-        <img
-            id="homepage-img"
-            class="highlight"
-            src="homepage-img.jpg"
-            alt="Kareem Ahmed">
-
-    </div>
-
-    <div id="bt-menu" class="card highlight">
-        <button id="bt-about"class="about-bt highlight"
-                onclick="window.location.href='about.html'">
-            من نحن
-        </button>
-
-        <button id="bt-products"
-                class="about-bt highlight"
-                onclick="window.location.href='products.html'">
-            المنتجات
-        </button>
-    </div>
+    <main id="main" class="page-shell home-shell">
+        <section class="hero-panel">
+            <div class="hero-copy">
+                <h1 id="name" class="name">د.كريم أحمد</h1>
+                <p id="job" class="hero-job">مدرب حرف يدوية</p>
+                <div class="hero-actions">
+                    <button class="primary-button" onclick="window.location.href='products.html'" id="hero-products">المنتجات</button>
+                    <button class="secondary-button" onclick="window.location.href='about.html'" id="hero-about">من نحن</button>
+                </div>
+            </div>
+            <div class="hero-media">
+                <img id="homepage-img" src="homepage-img.jpg" alt="Kareem Ahmed">
+                <div class="media-caption">
+                    <span id="media-label">Kareem Ahmed</span>
+                    <span id="media-subtitle">Handicrafts</span>
+                </div>
+            </div>
+        </section>
+        </section>
+    </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>

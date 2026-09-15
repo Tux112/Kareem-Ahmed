@@ -2,159 +2,617 @@ const translations = {
     en: {
         name: 'Dr.Kareem Ahmed',
         job: 'Handicrafts Instructor',
-
+        'hero-products': 'Products',
+        'hero-about': 'About',
+        'media-label': 'Kareem Ahmed',
+        'media-subtitle': 'Handicrafts',
         'problem-debug': 'Write your problem here then click Send',
         'body-placeholder': 'Describe your problem...',
         'bt-email': 'Send Email',
-
         'bt-debug': 'Debug',
         'bt-about': 'About',
         'bt-products': 'Products',
-
-        'prodct-name': 'Crystal Tasbeeh',
-        'product-des': 'Price: 40 EGP',
-
-        'prodct-name1': 'Turquoise Bracelet',
-        'product-des1': 'Price: 50 EGP',
-
-        'prodct-name2': 'Turquoise Keychain',
-        'product-des2': 'Price: 50 EGP',
-
-        'bt-buy1': 'Buy',
-        'bt-buy2': 'Buy',
-        'bt-buy3': 'Buy'
+        'buy-title': 'Place Order',
+        'phone-label': 'Phone number',
+        'name-label': 'Name',
+        'buy-submit': 'Send Order',
+        'buy-cancel': 'Cancel',
+        'products-eyebrow': 'COLLECTION',
+        'products-title': 'Products',
+        'products-intro': 'Browse the available handcrafted pieces.',
+        'product1-name': 'Crystal Misbaha',
+        'product1-price': 'Price: 40 EGP',
+        'product2-name': 'Turquoise Bracelet',
+        'product2-price': 'Price: 50 EGP',
+        'product3-name': 'Turquoise Pendant',
+        'product3-price': 'Price: 50 EGP'
     },
 
     ar: {
         name: 'د.كريم أحمد',
         job: 'مدرب حرف يدوية',
-
-        'problem-debug': 'أكتب مشكلتك هنا ثم أضغط على إرسال',
-        'body-placeholder': 'أكتب مشكلتك هنا...',
+        'hero-products': 'المنتجات',
+        'hero-about': 'من نحن',
+        'media-label': 'كريم أحمد',
+        'media-subtitle': 'حرف يدوية',
+        'problem-debug': 'اكتب مشكلتك ثم اضغط إرسال',
+        'body-placeholder': 'صف مشكلتك...',
         'bt-email': 'إرسال',
-
         'bt-debug': 'تصحيح',
         'bt-about': 'من نحن',
         'bt-products': 'المنتجات',
-
-        'prodct-name': 'سبحة كريستال',
-        'product-des': 'السعر: 40 ج.م',
-
-        'prodct-name1': 'غويشة فيروز',
-        'product-des1': 'السعر: 50 ج.م',
-
-        'prodct-name2': 'ميدالية فيروز',
-        'product-des2': 'السعر: 50 ج.م',
-
-        'bt-buy1': 'شراء',
-        'bt-buy2': 'شراء',
-        'bt-buy3': 'شراء'
+        'buy-title': 'طلب شراء',
+        'phone-label': 'رقم الهاتف',
+        'name-label': 'الاسم',
+        'buy-submit': 'إرسال الطلب',
+        'buy-cancel': 'إلغاء',
+        'products-eyebrow': 'المجموعة',
+        'products-title': 'المنتجات',
+        'products-intro': 'تصفح المنتجات المصنوعة يدوياً المتاحة.',
+        'product1-name': 'سبحة كريستال',
+        'product1-price': 'السعر: 40 ج.م',
+        'product2-name': 'غويشة فيروز',
+        'product2-price': 'السعر: 50 ج.م',
+        'product3-name': 'ميدالية فيروز',
+        'product3-price': 'السعر: 50 ج.م'
     }
 };
 
-document.querySelectorAll('.flag-button').forEach(button => {
-    button.addEventListener('click', function () {
 
-        const selectedLanguage = button.getAttribute('data-language');
-        const translation = translations[selectedLanguage];
+function getStoredSettings() {
+    let theme = localStorage.getItem('theme');
+    let language = localStorage.getItem('language');
 
-        if (document.getElementById('name')) {
-            document.getElementById('name').textContent = translation.name;
-        }
+    const params = new URLSearchParams(window.location.search);
 
-        if (document.getElementById('job')) {
-            document.getElementById('job').textContent = translation.job;
-        }
+    const urlTheme = params.get('theme');
+    const urlLanguage = params.get('language');
 
-        if (document.getElementById('problem-debug')) {
-            document.getElementById('problem-debug').textContent = translation['problem-debug'];
-        }
+    if (urlTheme === 'dark' || urlTheme === 'light') {
+        theme = urlTheme;
+        localStorage.setItem('theme', theme);
+    }
 
-        if (document.getElementById('body')) {
-            document.getElementById('body').placeholder = translation['body-placeholder'];
-        }
+    if (urlLanguage === 'en' || urlLanguage === 'ar') {
+        language = urlLanguage;
+        localStorage.setItem('language', language);
+    }
 
-        if (document.getElementById('bt-email')) {
-            document.getElementById('bt-email').textContent = translation['bt-email'];
-        }
+    if (theme !== 'dark' && theme !== 'light') {
+        theme = 'dark';
+    }
 
-        if (document.getElementById('bt-debug')) {
-            document.getElementById('bt-debug').textContent = translation['bt-debug'];
-        }
+    if (language !== 'en' && language !== 'ar') {
+        language = navigator.language.toLowerCase().startsWith('ar')
+            ? 'ar'
+            : 'en';
+    }
 
-        if (document.getElementById('bt-about')) {
-            document.getElementById('bt-about').textContent = translation['bt-about'];
-        }
+    return {
+        theme: theme,
+        language: language
+    };
+}
 
-        if (document.getElementById('bt-products')) {
-            document.getElementById('bt-products').textContent = translation['bt-products'];
-        }
 
-        if (document.getElementById('prodct-name')) {
-            document.getElementById('prodct-name').textContent = translation['prodct-name'];
-        }
+let settings = getStoredSettings();
 
-        if (document.getElementById('product-des')) {
-            document.getElementById('product-des').textContent = translation['product-des'];
-        }
+let currentLanguage = settings.language;
 
-        if (document.getElementById('prodct-name1')) {
-            document.getElementById('prodct-name1').textContent = translation['prodct-name1'];
-        }
 
-        if (document.getElementById('product-des1')) {
-            document.getElementById('product-des1').textContent = translation['product-des1'];
-        }
+function applyTranslation(language) {
+    if (language !== 'en' && language !== 'ar') {
+        language = 'en';
+    }
 
-        if (document.getElementById('prodct-name2')) {
-            document.getElementById('prodct-name2').textContent = translation['prodct-name2'];
-        }
+    currentLanguage = language;
 
-        if (document.getElementById('product-des2')) {
-            document.getElementById('product-des2').textContent = translation['product-des2'];
-        }
+    localStorage.setItem('language', language);
 
-        if (document.getElementById('bt-buy1')) {
-            document.getElementById('bt-buy1').textContent = translation['bt-buy1'];
-        }
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
 
-        if (document.getElementById('bt-buy2')) {
-            document.getElementById('bt-buy2').textContent = translation['bt-buy2'];
-        }
+    const texts = translations[language];
 
-        if (document.getElementById('bt-buy3')) {
-            document.getElementById('bt-buy3').textContent = translation['bt-buy3'];
+    Object.keys(texts).forEach(function (id) {
+        const element = document.getElementById(id);
+
+        if (!element) return;
+
+        if (
+            element.tagName === 'INPUT' ||
+            element.tagName === 'TEXTAREA'
+        ) {
+            element.placeholder = texts[id];
+        } else {
+            element.textContent = texts[id];
         }
     });
-});
 
-function sendEmail(bodyId) {
-    const bodyElement = document.getElementById(bodyId);
-    const body = bodyElement.value;
+    document.querySelectorAll(
+        '.language-button, .flag-button'
+    ).forEach(function (button) {
+        button.classList.toggle(
+            'active',
+            button.dataset.language === language
+        );
+    });
 
-    if (!body) {
-        alert('Please enter a message');
+    updateProductTranslations();
+}
+
+
+function updateProductTranslations() {
+    const product1 = document.getElementById('prodct-name');
+    const product2 = document.getElementById('prodct-name1');
+    const product3 = document.getElementById('prodct-name2');
+
+    const price1 = document.getElementById('product-des');
+    const price2 = document.getElementById('product-des1');
+    const price3 = document.getElementById('product-des2');
+
+    if (product1) {
+        product1.textContent =
+            translations[currentLanguage]['product1-name'];
+    }
+
+    if (product2) {
+        product2.textContent =
+            translations[currentLanguage]['product2-name'];
+    }
+
+    if (product3) {
+        product3.textContent =
+            translations[currentLanguage]['product3-name'];
+    }
+
+    if (price1) {
+        price1.textContent =
+            translations[currentLanguage]['product1-price'];
+    }
+
+    if (price2) {
+        price2.textContent =
+            translations[currentLanguage]['product2-price'];
+    }
+
+    if (price3) {
+        price3.textContent =
+            translations[currentLanguage]['product3-price'];
+    }
+
+    document.querySelectorAll('.cl-buy').forEach(function (button) {
+        button.textContent =
+            currentLanguage === 'ar' ? 'شراء' : 'Buy';
+    });
+}
+
+
+function getText(key) {
+    return translations[currentLanguage][key] || key;
+}
+
+
+function applyTheme(theme) {
+    if (theme !== 'dark' && theme !== 'light') {
+        theme = 'dark';
+    }
+
+    document.documentElement.setAttribute(
+        'data-theme',
+        theme
+    );
+
+    localStorage.setItem('theme', theme);
+
+    const themeButton =
+        document.getElementById('theme-toggle');
+
+    if (themeButton) {
+        themeButton.setAttribute(
+            'aria-label',
+            theme === 'dark'
+                ? 'Switch to light mode'
+                : 'Switch to dark mode'
+        );
+
+        themeButton.setAttribute(
+            'title',
+            theme === 'dark'
+                ? 'Light mode'
+                : 'Dark mode'
+        );
+
+        themeButton.setAttribute(
+            'aria-pressed',
+            theme === 'dark' ? 'true' : 'false'
+        );
+    }
+}
+
+
+function initializeTheme() {
+    const savedTheme =
+        localStorage.getItem('theme');
+
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+        applyTheme(savedTheme);
         return;
     }
 
-    fetch("https://telegram-worker.dronlymohamed112.workers.dev/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ body: body })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert("Message sent!");
-            bodyElement.value = "";
-        } else {
-            alert("Error: " + data.error);
+    applyTheme('dark');
+}
+
+
+function navigateWithSettings(url) {
+    const theme =
+        document.documentElement.getAttribute('data-theme') ||
+        localStorage.getItem('theme') ||
+        'dark';
+
+    const language =
+        currentLanguage ||
+        localStorage.getItem('language') ||
+        'en';
+
+    const separator =
+        url.includes('?') ? '&' : '?';
+
+    window.location.href =
+        url +
+        separator +
+        'theme=' + encodeURIComponent(theme) +
+        '&language=' + encodeURIComponent(language);
+}
+
+
+function setupNavigation() {
+    document.querySelectorAll(
+        'a[href$=".html"], button[onclick*=".html"]'
+    ).forEach(function (element) {
+
+        element.addEventListener(
+            'click',
+            function (event) {
+
+                let url = null;
+
+                if (element.tagName === 'A') {
+                    url = element.getAttribute('href');
+                } else {
+                    const onclick =
+                        element.getAttribute('onclick');
+
+                    const match =
+                        onclick &&
+                        onclick.match(
+                            /['"]([^'"]+\.html)['"]/
+                        );
+
+                    if (match) {
+                        url = match[1];
+                    }
+                }
+
+                if (!url) return;
+
+                event.preventDefault();
+                event.stopImmediatePropagation();
+
+                navigateWithSettings(url);
+
+            },
+            true
+        );
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    initializeTheme();
+
+    applyTranslation(currentLanguage);
+
+    setupNavigation();
+
+
+    document.querySelectorAll(
+        '.language-button, .flag-button'
+    ).forEach(function (button) {
+
+        button.addEventListener('click', function () {
+            applyTranslation(
+                button.dataset.language
+            );
+        });
+
+    });
+
+
+    const themeButton =
+        document.getElementById('theme-toggle');
+
+    if (themeButton) {
+
+        themeButton.addEventListener('click', function () {
+
+            const currentTheme =
+                document.documentElement.getAttribute(
+                    'data-theme'
+                );
+
+            applyTheme(
+                currentTheme === 'dark'
+                    ? 'light'
+                    : 'dark'
+            );
+
+        });
+
+    }
+
+
+    document.querySelectorAll('.cl-buy').forEach(function (button) {
+
+        button.addEventListener('click', function (event) {
+
+            event.preventDefault();
+
+            openBuyModal(button.id);
+
+        });
+
+    });
+
+});
+
+
+function openBuyModal(buttonId) {
+
+    const oldModal =
+        document.querySelector('.buy-modal-overlay');
+
+    if (oldModal) {
+        oldModal.remove();
+    }
+
+
+    let productName = '';
+
+
+    if (buttonId === 'bt-buy1') {
+
+        const element =
+            document.getElementById('prodct-name');
+
+        if (element) {
+            productName = element.textContent.trim();
         }
+
+    }
+
+
+    if (buttonId === 'bt-buy2') {
+
+        const element =
+            document.getElementById('prodct-name1');
+
+        if (element) {
+            productName = element.textContent.trim();
+        }
+
+    }
+
+
+    if (buttonId === 'bt-buy3') {
+
+        const element =
+            document.getElementById('prodct-name2');
+
+        if (element) {
+            productName = element.textContent.trim();
+        }
+
+    }
+
+
+    const overlay =
+        document.createElement('div');
+
+    overlay.className =
+        'buy-modal-overlay';
+
+
+    overlay.innerHTML = `
+        <div class="buy-modal">
+
+            <div class="buy-modal-header">
+                <h2>${getText('buy-title')}</h2>
+                <div class="buy-modal-product">
+                    ${productName}
+                </div>
+            </div>
+
+            <div class="buy-modal-body">
+
+                <div class="buy-modal-field">
+                    <label for="buy-name">
+                        ${getText('name-label')}
+                    </label>
+
+                    <input
+                        id="buy-name"
+                        type="text"
+                        autocomplete="name"
+                    >
+                </div>
+
+                <div class="buy-modal-field">
+                    <label for="buy-phone">
+                        ${getText('phone-label')}
+                    </label>
+
+                    <input
+                        id="buy-phone"
+                        type="tel"
+                        autocomplete="tel"
+                    >
+                </div>
+
+            </div>
+
+            <div class="buy-modal-footer">
+
+                <button
+                    type="button"
+                    class="buy-modal-cancel"
+                >
+                    ${getText('buy-cancel')}
+                </button>
+
+                <button
+                    type="button"
+                    class="buy-modal-submit"
+                >
+                    ${getText('buy-submit')}
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+
+    document.body.appendChild(overlay);
+
+
+    const nameInput =
+        overlay.querySelector('#buy-name');
+
+    const phoneInput =
+        overlay.querySelector('#buy-phone');
+
+    const cancelButton =
+        overlay.querySelector('.buy-modal-cancel');
+
+    const submitButton =
+        overlay.querySelector('.buy-modal-submit');
+
+
+    nameInput.focus();
+
+
+    cancelButton.addEventListener(
+        'click',
+        function () {
+            overlay.remove();
+        }
+    );
+
+
+    overlay.addEventListener(
+        'click',
+        function (event) {
+
+            if (event.target === overlay) {
+                overlay.remove();
+            }
+
+        }
+    );
+
+
+    submitButton.addEventListener(
+        'click',
+        function () {
+
+            const name =
+                nameInput.value.trim();
+
+            const phone =
+                phoneInput.value.trim();
+
+
+            if (!name) {
+                nameInput.focus();
+                return;
+            }
+
+
+            if (!phone) {
+                phoneInput.focus();
+                return;
+            }
+
+
+            const orderMessage =
+                'Product: ' + productName + '\n' +
+                'Phone: ' + phone + '\n' +
+                'Name: ' + name;
+
+
+            sendEmail(orderMessage);
+
+            overlay.remove();
+
+        }
+    );
+
+
+    nameInput.addEventListener(
+        'keydown',
+        function (event) {
+
+            if (event.key === 'Enter') {
+                phoneInput.focus();
+            }
+
+        }
+    );
+
+
+    phoneInput.addEventListener(
+        'keydown',
+        function (event) {
+
+            if (event.key === 'Enter') {
+                submitButton.click();
+            }
+
+        }
+    );
+}
+
+
+function sendEmail(body) {
+
+    fetch(
+        'https://telegram-worker.dronlymohamed112.workers.dev/',
+        {
+            method: 'POST',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                message: body
+            })
+        }
+    )
+    .then(function (response) {
+
+        if (!response.ok) {
+            throw new Error('Request failed');
+        }
+
+        return response.text();
+
     })
-    .catch(error => {
+    .catch(function (error) {
+
         console.error(error);
-        alert("Failed to send message");
+
     });
 }

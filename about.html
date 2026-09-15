@@ -3,38 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>About</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header id="bt-bar" class="site-header">
+        <a class="brand" href="index.html">Kareem Ahmed</a>
+        <nav class="site-nav">
+            <button id="bt-about" class="nav-button nav-active" onclick="window.location.href='about.html'">من نحن</button>
+            <button id="bt-products" class="nav-button" onclick="window.location.href='products.html'">المنتجات</button>
+            <button id="bt-debug" class="nav-button" onclick="window.location.href='debug.html'">تصحيح</button>
+        </nav>
+        <div class="site-controls">
+            <button class="language-button" data-language="en">EN</button>
+            <button class="language-button" data-language="ar">AR</button>
+            <button id="theme-toggle" class="theme-button" type="button"></button>
+        </div>
+    </header>
 
-    <div id="bt-bar" class="highlight">
-        <button class="flag-button about-bt highlight" data-language="en">EN</button>
-        <button class="flag-button about-bt highlight" data-language="ar">AR</button>
-
-        <button
-            id="bt-ret-main"
-            class="about-bt highlight"
-            onclick="window.location.href='index.html'">
-            return
-        </button>
-    </div>
-
-    <div class="card highlight">
-
-        <h1 class="name">
-            About
-        </h1>
-
-        <p class="text">
-            Just some talk to fill the paragraph for testing.
-        </p>
-
-    </div>
+    <main class="page-shell">
+        <section class="content-panel about-panel">
+            <div class="section-heading">
+                <p class="eyebrow" id="about-eyebrow">ABOUT</p>
+                <h1 id="about-title" class="page-title">About</h1>
+            </div>
+            <div class="about-content">
+                <p id="about-text" class="text">Just some talk to fill the paragraph for testing.</p>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>

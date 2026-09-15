@@ -4,50 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Debug</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header id="bt-bar" class="site-header">
+        <a class="brand" href="index.html">Kareem Ahmed</a>
+        <nav class="site-nav">
+            <button id="bt-about" class="nav-button" onclick="window.location.href='about.html'">من نحن</button>
+            <button id="bt-products" class="nav-button" onclick="window.location.href='products.html'">المنتجات</button>
+            <button id="bt-debug" class="nav-button nav-active" onclick="window.location.href='debug.html'">تصحيح</button>
+        </nav>
+        <div class="site-controls">
+            <button class="language-button" data-language="en">EN</button>
+            <button class="language-button" data-language="ar">AR</button>
+            <button id="theme-toggle" class="theme-button" type="button"></button>
+        </div>
+    </header>
 
-    <div id="bt-bar" class="highlight">
-        <button class="flag-button about-bt highlight" data-language="en">EN</button>
-        <button class="flag-button about-bt highlight" data-language="ar">AR</button>
-
-        <button
-            id="bt-ret-main"
-            class="about-bt highlight"
-            onclick="window.location.href='index.html'">
-            -->
-        </button>
-    </div>
-
-    <div class="card highlight">
-
-        <h2 id="problem-debug">
-            أكتب مشكلتك هنا ثم أضغط على أرسال
-        </h2>
-
-        <form class="text" onsubmit="event.preventDefault(); sendEmail('body');">
-
-            <textarea
-                id="body"
-                placeholder="Describe your problem..."
-                rows="6"
-                required>
-            </textarea>
-
-            <button
-                id="bt-email"
-                class="about-bt highlight"
-                type="submit">
-                إرسال
-            </button>
-
-        </form>
-
-    </div>
+    <main class="page-shell">
+        <section class="content-panel debug-panel">
+            <div class="section-heading">
+                <p class="eyebrow" id="debug-eyebrow">SUPPORT</p>
+                <h1 id="problem-debug" class="page-title">أكتب مشكلتك هنا ثم أضغط على أرسال</h1>
+            </div>
+            <form class="debug-form" onsubmit="event.preventDefault(); sendEmail('body');">
+                <textarea id="body" placeholder="Describe your problem..." rows="8" required></textarea>
+                <div class="form-footer">
+                    <span id="debug-note" class="form-note">Send a message with the details of your problem.</span>
+                    <button id="bt-email" class="primary-button" type="submit">إرسال</button>
+                </div>
+            </form>
+        </section>
+    </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>
