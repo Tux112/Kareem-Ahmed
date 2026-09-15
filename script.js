@@ -591,14 +591,12 @@ function sendEmail(body) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message: body })
+        body: JSON.stringify({ body: body })
     })
     .then(function (response) {
         return response.text().then(function (text) {
             if (!response.ok) {
-                throw new Error(
-                    'HTTP ' + response.status + ': ' + text
-                );
+                throw new Error('HTTP ' + response.status + ': ' + text);
             }
 
             console.log('Send successful:', text);
