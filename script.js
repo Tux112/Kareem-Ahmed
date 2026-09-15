@@ -586,33 +586,26 @@ function openBuyModal(buttonId) {
 
 
 function sendEmail(body) {
-
-    fetch(
-        'https://telegram-worker.dronlymohamed112.workers.dev/',
-        {
-            method: 'POST',
-
-            headers: {
-                'Content-Type': 'application/json'
-            },
-
-            body: JSON.stringify({
-                message: body
-            })
-        }
-    )
+    fetch('https://telegram-worker.dronlymohamed112.workers.dev/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: body })
+    })
     .then(function (response) {
+        return response.text().then(function (text) {
+            if (!response.ok) {
+                throw new Error(
+                    'HTTP ' + response.status + ': ' + text
+                );
+            }
 
-        if (!response.ok) {
-            throw new Error('Request failed');
-        }
-
-        return response.text();
-
+            console.log('Send successful:', text);
+        });
     })
     .catch(function (error) {
-
-        console.error(error);
-
+        console.error('sendEmail failed:', error);
+        alert('Sending failed:\n' + error.message);
     });
 }
