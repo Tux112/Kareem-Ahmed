@@ -586,20 +586,28 @@ function openBuyModal(buttonId) {
 
 
 function sendEmail(body) {
+    const payload = {
+        body: body
+    };
+
+    console.log('Sending payload:', payload);
+
     fetch('https://telegram-worker.dronlymohamed112.workers.dev/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ body: body })
+        body: JSON.stringify(payload)
     })
     .then(function (response) {
         return response.text().then(function (text) {
+            console.log('Worker response:', response.status, text);
+
             if (!response.ok) {
                 throw new Error('HTTP ' + response.status + ': ' + text);
             }
 
-            console.log('Send successful:', text);
+            console.log('Message sent successfully');
         });
     })
     .catch(function (error) {
