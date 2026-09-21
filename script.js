@@ -731,7 +731,12 @@ function openBuyModal(buttonId) {
 
 async function sendEmail(body) {
     try {
-        const message = document.getElementById(body).value;
+        const element = document.getElementById(body);
+        const message = element ? element.value : body;
+
+        if (!message) {
+            throw new Error('Message body is required');
+        }
 
         const response = await fetch('https://telegram-worker.dronlymohamed112.workers.dev/', {
             method: 'POST',
