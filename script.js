@@ -729,34 +729,29 @@ function openBuyModal(buttonId) {
 }
 
 
-function sendEmail(body) {
+async function sendEmail(body) {
+    try {
+        const message = document.getElementById(body).value;
 
-    fetch(
-        'https://telegram-worker.dronlymohamed112.workers.dev/',
-        {
+        const response = await fetch('https://telegram-worker.dronlymohamed112.workers.dev/', {
             method: 'POST',
-
             headers: {
                 'Content-Type': 'application/json'
             },
-
             body: JSON.stringify({
-                message: body
+                body: message
             })
-        }
-    )
-    .then(function (response) {
+        });
+
+        const result = await response.json();
 
         if (!response.ok) {
-            throw new Error('Request failed');
+            throw new Error(result.error || 'Request failed');
         }
 
-        return response.text();
-
-    })
-    .catch(function (error) {
-
-        console.error(error);
-
-    });
+        alert(result.message || 'Message sent successfully');
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error: ' + error.message);
+    }
 }
