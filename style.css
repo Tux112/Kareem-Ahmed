@@ -1015,3 +1015,73 @@ html[data-theme="dark"] .buy-modal-overlay {
         height: 230px;
     }
 }
+
+
+.buy-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.buy-modal {
+    width: min(100%, 520px);
+    max-height: calc(100dvh - 32px);
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.buy-modal *,
+.buy-modal *::before,
+.buy-modal *::after {
+    box-sizing: border-box;
+}
+
+.buy-modal-body {
+    min-height: 0;
+}
+
+.buy-map {
+    height: clamp(160px, 30dvh, 260px);
+    min-height: 160px;
+}
+
+@media (max-width: 650px) {
+    .buy-modal-overlay {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .buy-modal {
+        width: 100%;
+        max-height: calc(100dvh - 20px);
+        border-radius: 10px;
+    }
+
+    .buy-map {
+        height: 200px;
+    }
+}
+
+@media (max-height: 600px) {
+    .buy-modal-overlay {
+        align-items: flex-start;
+    }
+
+    .buy-modal {
+        max-height: calc(100dvh - 20px);
+    }
+
+    .buy-map {
+        height: 150px;
+        min-height: 120px;
+    }
+}
