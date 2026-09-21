@@ -13,11 +13,18 @@ const translations = {
         'bt-about': 'About',
         'bt-products': 'Products',
         'bt-contact': 'Contact Us',
+
         'buy-title': 'Place Order',
         'phone-label': 'Phone number',
         'name-label': 'Name',
+        'quantity-label': 'Quantity',
+        'location-label': 'Location',
+        'location-help': 'Click the map to select your delivery location.',
         'buy-submit': 'Send Order',
         'buy-cancel': 'Cancel',
+
+        'products-search-label': 'Search products',
+        'products-search-placeholder': 'Search products...',
 
         'contact-eyebrow': 'CONTACT',
         'contact-title': 'Contact Us',
@@ -118,11 +125,18 @@ const translations = {
         'bt-about': 'من نحن',
         'bt-products': 'المنتجات',
         'bt-contact': 'تواصل معنا',
+
         'buy-title': 'طلب شراء',
         'phone-label': 'رقم الهاتف',
         'name-label': 'الاسم',
+        'quantity-label': 'الكمية',
+        'location-label': 'الموقع',
+        'location-help': 'اضغط على الخريطة لتحديد موقع التوصيل.',
         'buy-submit': 'إرسال الطلب',
         'buy-cancel': 'إلغاء',
+
+        'products-search-label': 'البحث عن المنتجات',
+        'products-search-placeholder': 'ابحث عن منتج...',
 
         'contact-eyebrow': 'تواصل معنا',
         'contact-title': 'تواصل معنا',
@@ -248,7 +262,6 @@ function getStoredSettings() {
 
 
 let settings = getStoredSettings();
-
 let currentLanguage = settings.language;
 
 
@@ -258,7 +271,6 @@ function applyTranslation(language) {
     }
 
     currentLanguage = language;
-
     localStorage.setItem('language', language);
 
     document.documentElement.lang = language;
@@ -307,59 +319,20 @@ function updateProductTranslations() {
     const price4 = document.getElementById('product-des3');
     const price5 = document.getElementById('product-des4');
 
-    if (product1) {
-        product1.textContent =
-            translations[currentLanguage]['product1-name'];
-    }
+    if (product1) product1.textContent = translations[currentLanguage]['product1-name'];
+    if (product2) product2.textContent = translations[currentLanguage]['product2-name'];
+    if (product3) product3.textContent = translations[currentLanguage]['product3-name'];
+    if (product4) product4.textContent = translations[currentLanguage]['product4-name'];
+    if (product5) product5.textContent = translations[currentLanguage]['product5-name'];
 
-    if (product2) {
-        product2.textContent =
-            translations[currentLanguage]['product2-name'];
-    }
-
-    if (product3) {
-        product3.textContent =
-            translations[currentLanguage]['product3-name'];
-    }
-
-    if (product4) {
-        product4.textContent =
-            translations[currentLanguage]['product4-name'];
-    }
-
-    if (product5) {
-        product5.textContent =
-            translations[currentLanguage]['product5-name'];
-    }
-
-    if (price1) {
-        price1.textContent =
-            translations[currentLanguage]['product1-price'];
-    }
-
-    if (price2) {
-        price2.textContent =
-            translations[currentLanguage]['product2-price'];
-    }
-
-    if (price3) {
-        price3.textContent =
-            translations[currentLanguage]['product3-price'];
-    }
-
-    if (price4) {
-        price4.textContent =
-            translations[currentLanguage]['product4-price'];
-    }
-
-    if (price5) {
-        price5.textContent =
-            translations[currentLanguage]['product5-price'];
-    }
+    if (price1) price1.textContent = translations[currentLanguage]['product1-price'];
+    if (price2) price2.textContent = translations[currentLanguage]['product2-price'];
+    if (price3) price3.textContent = translations[currentLanguage]['product3-price'];
+    if (price4) price4.textContent = translations[currentLanguage]['product4-price'];
+    if (price5) price5.textContent = translations[currentLanguage]['product5-price'];
 
     document.querySelectorAll('.cl-buy').forEach(function (button) {
-        button.textContent =
-            currentLanguage === 'ar' ? 'شراء' : 'Buy';
+        button.textContent = currentLanguage === 'ar' ? 'شراء' : 'Buy';
     });
 }
 
@@ -374,15 +347,10 @@ function applyTheme(theme) {
         theme = 'dark';
     }
 
-    document.documentElement.setAttribute(
-        'data-theme',
-        theme
-    );
-
+    document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
 
-    const themeButton =
-        document.getElementById('theme-toggle');
+    const themeButton = document.getElementById('theme-toggle');
 
     if (themeButton) {
         themeButton.setAttribute(
@@ -408,8 +376,7 @@ function applyTheme(theme) {
 
 
 function initializeTheme() {
-    const savedTheme =
-        localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem('theme');
 
     if (savedTheme === 'dark' || savedTheme === 'light') {
         applyTheme(savedTheme);
@@ -446,24 +413,19 @@ function setupNavigation() {
     document.querySelectorAll(
         'a[href$=".html"], button[onclick*=".html"]'
     ).forEach(function (element) {
-
         element.addEventListener(
             'click',
             function (event) {
-
                 let url = null;
 
                 if (element.tagName === 'A') {
                     url = element.getAttribute('href');
                 } else {
-                    const onclick =
-                        element.getAttribute('onclick');
+                    const onclick = element.getAttribute('onclick');
 
                     const match =
                         onclick &&
-                        onclick.match(
-                            /['"]([^'"]+\.html)['"]/
-                        );
+                        onclick.match(/['"]([^'"]+\.html)['"]/);
 
                     if (match) {
                         url = match[1];
@@ -476,7 +438,6 @@ function setupNavigation() {
                 event.stopImmediatePropagation();
 
                 navigateWithSettings(url);
-
             },
             true
         );
@@ -484,68 +445,82 @@ function setupNavigation() {
 }
 
 
+function setupProductSearch() {
+    const searchInput = document.getElementById('product-search');
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', function () {
+        const query = searchInput.value.trim().toLowerCase();
+
+        document.querySelectorAll('.product-box').forEach(function (product, index) {
+            const productNumber = index + 1;
+
+            const englishName =
+                translations.en['product' + productNumber + '-name'] || '';
+
+            const arabicName =
+                translations.ar['product' + productNumber + '-name'] || '';
+
+            const searchableText =
+                (englishName + ' ' + arabicName).toLowerCase();
+
+            product.style.display =
+                !query || searchableText.includes(query)
+                    ? ''
+                    : 'none';
+        });
+    });
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
-
     initializeTheme();
-
     applyTranslation(currentLanguage);
-
     setupNavigation();
-
+    setupProductSearch();
 
     document.querySelectorAll(
         '.language-button, .flag-button'
     ).forEach(function (button) {
-
         button.addEventListener('click', function () {
-            applyTranslation(
-                button.dataset.language
-            );
+            applyTranslation(button.dataset.language);
+
+            const searchInput =
+                document.getElementById('product-search');
+
+            if (searchInput) {
+                searchInput.dispatchEvent(new Event('input'));
+            }
         });
-
     });
-
 
     const themeButton =
         document.getElementById('theme-toggle');
 
     if (themeButton) {
-
         themeButton.addEventListener('click', function () {
-
             const currentTheme =
-                document.documentElement.getAttribute(
-                    'data-theme'
-                );
+                document.documentElement.getAttribute('data-theme');
 
             applyTheme(
                 currentTheme === 'dark'
                     ? 'light'
                     : 'dark'
             );
-
         });
-
     }
 
-
     document.querySelectorAll('.cl-buy').forEach(function (button) {
-
         button.addEventListener('click', function (event) {
-
             event.preventDefault();
-
             openBuyModal(button.id);
-
         });
-
     });
-
 });
 
 
 function openBuyModal(buttonId) {
-
     const oldModal =
         document.querySelector('.buy-modal-overlay');
 
@@ -553,76 +528,28 @@ function openBuyModal(buttonId) {
         oldModal.remove();
     }
 
-
     let productName = '';
 
+    const productIds = {
+        'bt-buy1': 'prodct-name',
+        'bt-buy2': 'prodct-name1',
+        'bt-buy3': 'prodct-name2',
+        'bt-buy4': 'prodct-name3',
+        'bt-buy5': 'prodct-name4'
+    };
 
-    if (buttonId === 'bt-buy1') {
+    const productElement =
+        document.getElementById(productIds[buttonId]);
 
-        const element =
-            document.getElementById('prodct-name');
-
-        if (element) {
-            productName = element.textContent.trim();
-        }
-
+    if (productElement) {
+        productName = productElement.textContent.trim();
     }
-
-
-    if (buttonId === 'bt-buy2') {
-
-        const element =
-            document.getElementById('prodct-name1');
-
-        if (element) {
-            productName = element.textContent.trim();
-        }
-
-    }
-
-
-    if (buttonId === 'bt-buy3') {
-
-        const element =
-            document.getElementById('prodct-name2');
-
-        if (element) {
-            productName = element.textContent.trim();
-        }
-
-    }
-
-
-    if (buttonId === 'bt-buy4') {
-
-        const element =
-            document.getElementById('prodct-name3');
-
-        if (element) {
-            productName = element.textContent.trim();
-        }
-
-    }
-
-
-    if (buttonId === 'bt-buy5') {
-
-        const element =
-            document.getElementById('prodct-name4');
-
-        if (element) {
-            productName = element.textContent.trim();
-        }
-
-    }
-
 
     const overlay =
         document.createElement('div');
 
     overlay.className =
         'buy-modal-overlay';
-
 
     overlay.innerHTML = `
         <div class="buy-modal">
@@ -660,6 +587,52 @@ function openBuyModal(buttonId) {
                     >
                 </div>
 
+                <div class="buy-modal-field">
+                    <label>
+                        ${getText('quantity-label')}
+                    </label>
+
+                    <div class="quantity-control">
+                        <button
+                            type="button"
+                            class="quantity-button quantity-minus"
+                            aria-label="Decrease quantity"
+                        >
+                            −
+                        </button>
+
+                        <span
+                            id="buy-quantity"
+                            class="quantity-value"
+                        >
+                            1
+                        </span>
+
+                        <button
+                            type="button"
+                            class="quantity-button quantity-plus"
+                            aria-label="Increase quantity"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <div class="buy-modal-location">
+                    <label>
+                        ${getText('location-label')}
+                    </label>
+
+                    <div
+                        id="buy-map"
+                        class="buy-map"
+                    ></div>
+
+                    <p class="buy-map-help">
+                        ${getText('location-help')}
+                    </p>
+                </div>
+
             </div>
 
             <div class="buy-modal-footer">
@@ -683,9 +656,7 @@ function openBuyModal(buttonId) {
         </div>
     `;
 
-
     document.body.appendChild(overlay);
-
 
     const nameInput =
         overlay.querySelector('#buy-name');
@@ -693,124 +664,231 @@ function openBuyModal(buttonId) {
     const phoneInput =
         overlay.querySelector('#buy-phone');
 
+    const quantityValue =
+        overlay.querySelector('#buy-quantity');
+
+    const minusButton =
+        overlay.querySelector('.quantity-minus');
+
+    const plusButton =
+        overlay.querySelector('.quantity-plus');
+
     const cancelButton =
         overlay.querySelector('.buy-modal-cancel');
 
     const submitButton =
         overlay.querySelector('.buy-modal-submit');
 
+    let quantity = 1;
+    let selectedLocation = null;
+
+    minusButton.addEventListener('click', function () {
+        if (quantity <= 1) return;
+
+        quantity -= 1;
+        quantityValue.textContent = quantity;
+    });
+
+    plusButton.addEventListener('click', function () {
+        quantity += 1;
+        quantityValue.textContent = quantity;
+    });
+
+    minusButton.setAttribute(
+        'aria-label',
+        currentLanguage === 'ar'
+            ? 'تقليل الكمية'
+            : 'Decrease quantity'
+    );
+
+    plusButton.setAttribute(
+        'aria-label',
+        currentLanguage === 'ar'
+            ? 'زيادة الكمية'
+            : 'Increase quantity'
+    );
+
+    let map = null;
+    let marker = null;
+
+    if (typeof L !== 'undefined') {
+        map = L.map('buy-map').setView(
+            [30.0444, 31.2357],
+            12
+        );
+
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap contributors'
+            }
+        ).addTo(map);
+
+        map.on('click', function (event) {
+            const latitude =
+                event.latlng.lat;
+
+            const longitude =
+                event.latlng.lng;
+
+            selectedLocation = {
+                latitude: latitude,
+                longitude: longitude
+            };
+
+            if (marker) {
+                marker.setLatLng(event.latlng);
+            } else {
+                marker =
+                    L.marker(event.latlng)
+                        .addTo(map);
+            };
+        });
+
+        setTimeout(function () {
+            map.invalidateSize();
+        }, 100);
+    }
 
     nameInput.focus();
-
 
     cancelButton.addEventListener(
         'click',
         function () {
+            if (map) {
+                map.remove();
+            }
+
             overlay.remove();
         }
     );
 
-
     overlay.addEventListener(
         'click',
         function (event) {
-
             if (event.target === overlay) {
+                if (map) {
+                    map.remove();
+                }
+
                 overlay.remove();
             }
-
         }
     );
-
 
     submitButton.addEventListener(
         'click',
         function () {
-
             const name =
                 nameInput.value.trim();
 
             const phone =
                 phoneInput.value.trim();
 
-
             if (!name) {
                 nameInput.focus();
                 return;
             }
-
 
             if (!phone) {
                 phoneInput.focus();
                 return;
             }
 
+            if (!selectedLocation) {
+                alert(
+                    currentLanguage === 'ar'
+                        ? 'يرجى تحديد موقع التوصيل على الخريطة.'
+                        : 'Please select your delivery location on the map.'
+                );
+                return;
+            }
+
+            const latitude =
+                selectedLocation.latitude.toFixed(6);
+
+            const longitude =
+                selectedLocation.longitude.toFixed(6);
+
+            const mapLink =
+                'https://www.google.com/maps?q=' +
+                latitude +
+                ',' +
+                longitude;
 
             const orderMessage =
                 'Product: ' + productName + '\n' +
                 'Phone: ' + phone + '\n' +
-                'Name: ' + name;
-
+                'Name: ' + name + '\n' +
+                'Quantity: ' + quantity + '\n' +
+                'Location: ' + latitude + ', ' + longitude + '\n' +
+                'Map: ' + mapLink;
 
             sendEmail(orderMessage);
 
-            overlay.remove();
+            if (map) {
+                map.remove();
+            }
 
+            overlay.remove();
         }
     );
-
 
     nameInput.addEventListener(
         'keydown',
         function (event) {
-
             if (event.key === 'Enter') {
                 phoneInput.focus();
             }
-
         }
     );
-
 
     phoneInput.addEventListener(
         'keydown',
         function (event) {
-
             if (event.key === 'Enter') {
                 submitButton.click();
             }
-
         }
     );
 }
 
 
-async function sendEmail(body) {
+async function sendEmail(message) {
     try {
-        const element = document.getElementById(body);
-        const message = element ? element.value : body;
+        message = String(message || '').trim();
 
         if (!message) {
             throw new Error('Message body is required');
         }
 
-        const response = await fetch('https://telegram-worker.dronlymohamed112.workers.dev/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                body: message
-            })
-        });
+        const response = await fetch(
+            'https://telegram-worker.dronlymohamed112.workers.dev/',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    body: message
+                })
+            }
+        );
 
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.error || 'Request failed');
+            throw new Error(
+                result.error || 'Request failed'
+            );
         }
 
-        alert(result.message || 'Message sent successfully');
+        alert(
+            result.message ||
+            'Message sent successfully'
+        );
+
     } catch (error) {
         console.error('Error:', error);
         alert('Error: ' + error.message);

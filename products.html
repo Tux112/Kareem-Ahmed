@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
     <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
 </head>
 <body>
     <header id="bt-bar" class="site-header">
@@ -30,6 +34,16 @@
             </div>
             <p id="products-intro" class="page-intro-text">Browse the available handcrafted pieces.</p>
         </section>
+
+        <div class="products-search">
+            <label id="products-search-label" for="product-search">Search products</label>
+            <input
+                id="product-search"
+                type="search"
+                placeholder="Search products..."
+                autocomplete="off"
+            >
+        </div>
 
         <section class="products-container">
             <article class="product-box">
@@ -104,6 +118,7 @@
         </section>
     </main>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
