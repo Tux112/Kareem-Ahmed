@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="bt-bar" class="site-header">
+        <a class="brand" href="index.html">Kareem Ahmed</a>
+
+        <nav class="site-nav">
+            <button id="bt-about" class="nav-button" onclick="window.location.href='about.html'">من نحن</button>
+            <button id="bt-products" class="nav-button" onclick="window.location.href='products.html'">المنتجات</button>
+            <button id="bt-contact" class="nav-button nav-active" onclick="window.location.href='contact.html'">تواصل معنا</button>
+            <button id="bt-debug" class="nav-button" onclick="window.location.href='debug.html'">تصحيح</button>
+        </nav>
+
+        <div class="site-controls">
+            <button class="language-button" data-language="en">EN</button>
+            <button class="language-button" data-language="ar">AR</button>
+            <button id="theme-toggle" class="theme-button" type="button"></button>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="content-panel contact-panel">
+            <div class="section-heading">
+                <p class="eyebrow" id="contact-eyebrow">CONTACT</p>
+                <h1 id="contact-title" class="page-title">تواصل معنا</h1>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-item">
+                    <h2 id="contact-phone-title">رقم الهاتف</h2>
+                    <p id="contact-phone"></p>
+                </div>
+
+                <div class="contact-item">
+                    <h2 id="contact-whatsapp-title">واتساب</h2>
+                    <p id="contact-whatsapp"></p>
+                </div>
+
+                <div class="contact-item">
+                    <h2 id="contact-facebook-title">فيسبوك</h2>
+                    <p id="contact-facebook"></p>
+                </div>
+
+                <div class="contact-item">
+                    <h2 id="contact-instagram-title">إنستجرام</h2>
+                    <p id="contact-instagram"></p>
+                </div>
+
+                <div class="contact-item">
+                    <h2 id="contact-email-title">البريد الإلكتروني</h2>
+                    <p id="contact-email"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
