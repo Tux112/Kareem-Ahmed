@@ -781,8 +781,6 @@ html[data-theme="dark"] .buy-modal-overlay {
         transition-duration: 0.01ms !important;
     }
 }
-
-#br-email {
-    margin: 20px;
+#bt-email {
+margin: 20px;
 }
-    

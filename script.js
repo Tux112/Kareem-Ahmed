@@ -586,32 +586,33 @@ function openBuyModal(buttonId) {
 
 
 function sendEmail(body) {
-    const payload = {
-        body: body
-    };
 
-    console.log('Sending payload:', payload);
+    fetch(
+        'https://telegram-worker.dronlymohamed112.workers.dev/',
+        {
+            method: 'POST',
 
-    fetch('https://telegram-worker.dronlymohamed112.workers.dev/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                message: body
+            })
+        }
+    )
     .then(function (response) {
-        return response.text().then(function (text) {
-            console.log('Worker response:', response.status, text);
 
-            if (!response.ok) {
-                throw new Error('HTTP ' + response.status + ': ' + text);
-            }
+        if (!response.ok) {
+            throw new Error('Request failed');
+        }
 
-            console.log('Message sent successfully');
-        });
+        return response.text();
+
     })
     .catch(function (error) {
-        console.error('sendEmail failed:', error);
-        alert('Sending failed:\n' + error.message);
+
+        console.error(error);
+
     });
 }

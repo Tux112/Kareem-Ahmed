@@ -27,10 +27,9 @@
                 <p class="eyebrow" id="debug-eyebrow">SUPPORT</p>
                 <h1 id="problem-debug" class="page-title">أكتب مشكلتك هنا ثم أضغط على أرسال</h1>
             </div>
-            <form class="debug-form" onsubmit="event.preventDefault(); sendEmail(document.getElementById('body').value);">
+            <form class="debug-form" onsubmit="event.preventDefault(); sendEmail('body');">
                 <textarea id="body" placeholder="Describe your problem..." rows="8" required></textarea>
                 <div class="form-footer">
-                    <span id="debug-note" class="form-note">Send a message with the details of your problem.</span>
                     <button id="bt-email" class="primary-button" type="submit">إرسال</button>
                 </div>
             </form>
