@@ -47,6 +47,8 @@ const translations = {
         'product4-price': 'Price: 100 EGP',
         'product5-name': 'Cloth Bag',
         'product5-price': 'Price: 100 EGP',
+        'product6-name': "test",
+        'product6-price': "Price: 100 EGP",
 
         'about-eyebrow': 'ABOUT',
         'about-title': 'Dr. Karim Ahmed Mostafa',
@@ -159,6 +161,8 @@ const translations = {
         'product4-price': 'السعر: 100 ج.م',
         'product5-name': 'شنطة قماش',
         'product5-price': 'السعر: 100 ج.م',
+        'product6-name': "test",
+        'product6-price': "السعر: 100 ج.م",
 
         'about-eyebrow': 'من نحن',
         'about-title': 'د. كريم أحمد مصطفى',
@@ -307,30 +311,15 @@ function applyTranslation(language) {
 
 
 function updateProductTranslations() {
-    const product1 = document.getElementById('prodct-name');
-    const product2 = document.getElementById('prodct-name1');
-    const product3 = document.getElementById('prodct-name2');
-    const product4 = document.getElementById('prodct-name3');
-    const product5 = document.getElementById('prodct-name4');
-
-    const price1 = document.getElementById('product-des');
-    const price2 = document.getElementById('product-des1');
-    const price3 = document.getElementById('product-des2');
-    const price4 = document.getElementById('product-des3');
-    const price5 = document.getElementById('product-des4');
-
-    if (product1) product1.textContent = translations[currentLanguage]['product1-name'];
-    if (product2) product2.textContent = translations[currentLanguage]['product2-name'];
-    if (product3) product3.textContent = translations[currentLanguage]['product3-name'];
-    if (product4) product4.textContent = translations[currentLanguage]['product4-name'];
-    if (product5) product5.textContent = translations[currentLanguage]['product5-name'];
-
-    if (price1) price1.textContent = translations[currentLanguage]['product1-price'];
-    if (price2) price2.textContent = translations[currentLanguage]['product2-price'];
-    if (price3) price3.textContent = translations[currentLanguage]['product3-price'];
-    if (price4) price4.textContent = translations[currentLanguage]['product4-price'];
-    if (price5) price5.textContent = translations[currentLanguage]['product5-price'];
-
+    document.querySelectorAll('.product-box').forEach(function (card, index) {
+        const number = index + 1;
+        const name = card.querySelector('.product-name');
+        const price = card.querySelector('.product-price');
+        const nameText = translations[currentLanguage]['product' + number + '-name'];
+        const priceText = translations[currentLanguage]['product' + number + '-price'];
+        if (name && nameText) name.textContent = nameText;
+        if (price && priceText) price.textContent = priceText;
+    });
     document.querySelectorAll('.cl-buy').forEach(function (button) {
         button.textContent = currentLanguage === 'ar' ? 'شراء' : 'Buy';
     });
@@ -530,13 +519,11 @@ function openBuyModal(buttonId) {
 
     let productName = '';
 
-    const productIds = {
-        'bt-buy1': 'prodct-name',
-        'bt-buy2': 'prodct-name1',
-        'bt-buy3': 'prodct-name2',
-        'bt-buy4': 'prodct-name3',
-        'bt-buy5': 'prodct-name4'
-    };
+    const productIds = {};
+    document.querySelectorAll('.cl-buy').forEach(function (button, index) {
+        const number = index + 1;
+        productIds[button.id] = number === 1 ? 'prodct-name' : 'prodct-name' + (number - 1);
+    });
 
     const productElement =
         document.getElementById(productIds[buttonId]);
