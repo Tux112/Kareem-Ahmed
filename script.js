@@ -47,9 +47,6 @@ const translations = {
         'product4-price': 'Price: 100 EGP',
         'product5-name': 'Cloth Bag',
         'product5-price': 'Price: 100 EGP',
-        'product6-name': "test",
-        'product6-price': "Price: 100 EGP",
-
         'about-eyebrow': 'ABOUT',
         'about-title': 'Dr. Karim Ahmed Mostafa',
         'about-subtitle': 'Artist • Trainer • Employee • A Man of Golden Talents',
@@ -161,9 +158,6 @@ const translations = {
         'product4-price': 'السعر: 100 ج.م',
         'product5-name': 'شنطة قماش',
         'product5-price': 'السعر: 100 ج.م',
-        'product6-name': "test",
-        'product6-price': "السعر: 100 ج.م",
-
         'about-eyebrow': 'من نحن',
         'about-title': 'د. كريم أحمد مصطفى',
         'about-subtitle': 'فنان • مدرب • موظف • صاحب موهبة استثنائية',
